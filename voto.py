@@ -160,6 +160,13 @@ class Libretto:
         for v in self._voti:
             print(v)
         print(f"La media vale {self.media():.2f}")
+    def stampaGUI(self):
+        outList = []
+        outList.append(f"Hai {len(self._voti)} voti")
+        for v in self._voti:
+            outList.append(v)
+        outList.append(f"La media vale {self.media():.2f}")
+        return outList
 
     def cancella_inferiori(self,punteggio):
     #     for v in self._voti:
