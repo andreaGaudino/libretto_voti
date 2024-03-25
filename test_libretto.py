@@ -12,6 +12,7 @@ voti25 = lib.findByPunteggio(25, False)
 for v in voti25:
     print(v.esame)
 
+
 voto_analisi2 = lib.findByEsame("Analisi III")
 if voto_analisi2 is None:
     print("Nessun voto trovato")
