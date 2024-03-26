@@ -1,6 +1,7 @@
 from voto import Libretto
 from view import View
 from voto import Voto
+import flet as ft
 
 
 class Controller(object):
@@ -14,7 +15,7 @@ class Controller(object):
     def handlePrint(self, e):
         outList = self._model.stampaGUI()
         for elem in outList:
-            self._view._lvOut.controls.append(elem)
+            self._view._lvOut.controls.append(ft.Text(elem))
         self._view.update()
         pass
 

@@ -4,7 +4,7 @@ from controller import Controller
 
 def main(page: ft.Page):
     v=View(page)
-    c=Controller(View)
+    c=Controller(v)
     v.setController(c)
     v.caricaInterfaccia()
 

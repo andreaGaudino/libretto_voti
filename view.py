@@ -43,7 +43,7 @@ class View(object):
     def _fillDdVoto(self):
         for i in range(18,31):
             self._ddVoto.options.append(ft.dropdown.Option(str(i)))
-            self._ddVoto.options.append(ft.dropdown.Option("30L"))
+        self._ddVoto.options.append(ft.dropdown.Option("30L"))
 
 
     def update(self):
