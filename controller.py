@@ -1,3 +1,4 @@
+import voto
 from voto import Libretto
 from view import View
 from voto import Voto
@@ -11,13 +12,49 @@ class Controller(object):
         self.startupLibretto()
 
     def handleAdd(self, e):
-        pass
+        nomeEsame = self._view._txtIn.value
+        if nomeEsame=="":
+            self._view._lvOut.controls.append(ft.Text("Il campo nome non può essere vuoto", color="red"))
+            self._view.update()
+            return
+        strCfu = self._view._txtCFU.value
+        try:
+            strCfu = int(strCfu)
+        except ValueError:
+            self._view._lvOut.controls.append(ft.Text("Il campo cfu deve essere un intero", color="red"))
+            self._view.update()
+            return
+
+        punteggio = self._view._ddVoto.value
+        if punteggio==None:
+            self._view._lvOut.controls.append(ft.Text("Il campo punteggio non può essere vuoto", color="red"))
+            self._view.update()
+            return
+        if punteggio=="30L":
+            punteggio=30
+            lode = True
+        else:
+            punteggio=int(punteggio)
+            lode = False
+
+        data = self._view._datePicker.value
+        if data==None:
+            self._view._lvOut.controls.append(ft.Text("Seleziona una data", color="red"))
+            self._view.update()
+            return
+
+        self._model.append(voto.Voto(nomeEsame, strCfu, punteggio, lode, f"{data.year}-{data.month}-{data.day}" ))
+        self._view._lvOut.controls.append(ft.Text("Voto aggiunto correttamente"))
+        self._view.update()
+
+
+
     def handlePrint(self, e):
         outList = self._model.stampaGUI()
         for elem in outList:
             self._view._lvOut.controls.append(ft.Text(elem))
         self._view.update()
-        pass
+
 
 
 
